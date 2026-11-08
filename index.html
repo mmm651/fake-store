@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== TOP SECTION: title + filters + cart ===== -->
+  <header class="top">
+    <h1 class="store-title">My Store</h1>
+
+    <!-- Search & Filters -->
+    <section class="filters" aria-label="Search and filters">
+      <div class="filters-row">
+        <input type="search" id="search-input" placeholder="Search for products..." />
+
+        <select id="category-select">
+          <option value="all">All Categories</option>
+          <!-- JS: append <option> for each category from the API -->
+        </select>
+
+        <input type="number" id="min-price" placeholder="Min Price" min="0" />
+        <input type="number" id="max-price" placeholder="Max Price" min="0" />
+
+        <button type="button" id="apply-filters" class="btn btn-green">Apply Filters</button>
+      </div>
+
+      <div class="filters-row">
+        <select id="sort-select">
+          <option value="">Sort by Price</option>
+          <option value="Ascending">Price: Low to High</option>
+          <option value="Descending">Price: High to Low</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Shopping Cart -->
+    <section class="cart" aria-label="Shopping cart">
+      <h2>Shopping Cart</h2>
+
+      <ul id="cart-items" class="cart-list">
+        <!-- JS: render items like this:
+        <li class="cart-item">
+          <span class="cart-item-name">Product title - $99.99</span>
+          <span class="cart-item-qty">2</span>
+          <button class="btn btn-remove" data-id="1">Remove</button>
+        </li>
+        -->
+      </ul>
+      <p id="cart-empty" class="cart-empty">Your cart is empty.</p>
+
+      <p class="cart-total">Total Quantity: <span id="total-quantity">0</span></p>
+      <p class="cart-total">Total Price: $<span id="total-price">0.00</span></p>
+    </section>
+  </header>
+
+  <!-- ===== PRODUCTS ===== -->
+  <main class="products-section">
+    <p id="status-message" class="status-message" hidden></p>
+
+    <!-- JS: render 6 cards per page inside this grid -->
+    <div id="product-grid" class="product-grid">
+      <!-- Card template (JS should generate this for each product):
+      <article class="product-card">
+        <div class="product-img-wrap">
+          <img src="IMAGE_URL" alt="TITLE" />
+        </div>
+        <h3 class="product-title">TITLE</h3>
+        <p class="product-price">$PRICE</p>
+        <div class="card-actions">
+          <button class="btn btn-blue add-to-cart" data-id="ID">Add to Cart</button>
+          <button class="btn btn-blue view-details" data-id="ID">Details</button>
+        </div>
+      </article>
+      -->
+    </div>
+
+    <!-- Pagination -->
+    <nav class="pagination" aria-label="Pagination">
+      <button type="button" id="prev-page" class="btn btn-blue">Previous</button>
+      <div id="page-numbers" class="page-numbers">
+        <!-- JS: <button class="page-btn active">1</button> ... -->
+      </div>
+      <button type="button" id="next-page" class="btn btn-blue">Next</button>
+    </nav>
+    <p id="page-info" class="page-info">Page 1 of 1</p>
+  </main>
+
+  <script src="main1.js" defer></script>
+</body>
+</html>
